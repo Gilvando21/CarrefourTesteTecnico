@@ -1,0 +1,11 @@
+{
+  "name": "carrefour-qa-automation",
+  "version": "2.0.0",
+  "description": "Senior QA Automation Framework - Mobile (WebdriverIO/Appium) and API (Supertest)",
+  "scripts": {
+    "install:all": "cd api-tests && npm install && cd ../mobile-tests && npm install",
+    "test:api": "cd api-tests && npm test",
+    "test:mobile": "cd mobile-tests && npx wdio run wdio.conf.js",
+    "test": "npm run install:all && npm run test:api"
+  }
+}

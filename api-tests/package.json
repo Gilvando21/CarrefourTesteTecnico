@@ -1,13 +1,13 @@
-
 {
-  "name": "api-automation-tests",
+  "name": "serverest-api-tests",
   "version": "1.0.0",
   "scripts": {
-    "test": "mocha tests/*.js"
+    "test": "mocha tests/*.js --timeout 15000 --retries 2"
   },
   "dependencies": {
     "supertest": "^6.3.3",
     "chai": "^4.3.7",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "jsonwebtoken": "^9.0.0"
   }
 }

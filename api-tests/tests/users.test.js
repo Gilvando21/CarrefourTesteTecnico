@@ -1,4 +1,3 @@
-
 const request = require('supertest')
 const { expect } = require('chai')
 
@@ -6,51 +5,77 @@ const BASE_URL = 'https://serverest.dev'
 
 let userId
 
-describe('Users API Full CRUD', () => {
+describe('Users API - CRUD Validation', function(){
 
-it('Authenticate user JWT', async ()=>{
+this.retries(2)
+
+it('Authenticate admin user', async ()=>{
+
 const res = await request(BASE_URL)
 .post('/login')
 .send({
-email: "admin@serverest.dev",
-password: "admin"
-})
-expect(res.status).to.equal(200)
+ email:'admin@serverest.dev',
+ password:'admin'
 })
 
-it('Create user POST /usuarios', async ()=>{
+expect(res.status).to.equal(200)
+expect(res.body).to.have.property('authorization')
+
+})
+
+it('Create new user', async ()=>{
+
+const email = `qa_${Date.now()}@test.com`
+
 const res = await request(BASE_URL)
 .post('/usuarios')
 .send({
-nome: "QA Automation",
-email: "qa"+Date.now()+"@test.com",
-password: "123456",
-administrador: "true"
+ nome:'QA Automation',
+ email:email,
+ password:'123456',
+ administrador:'true'
 })
+
 expect(res.status).to.equal(201)
+expect(res.body).to.have.property('_id')
+
 userId = res.body._id
+
 })
 
-it('Get users GET /usuarios', async ()=>{
-const res = await request(BASE_URL).get('/usuarios')
-expect(res.status).to.equal(200)
-})
+it('Retrieve users list', async ()=>{
 
-it('Update user PUT /usuarios/:id', async ()=>{
 const res = await request(BASE_URL)
-.put('/usuarios/'+userId)
-.send({
-nome: "QA Updated",
-email: "qa"+Date.now()+"@test.com",
-password: "123456",
-administrador: "true"
-})
+.get('/usuarios')
+
 expect(res.status).to.equal(200)
+
 })
 
-it('Delete user DELETE /usuarios/:id', async ()=>{
-const res = await request(BASE_URL).delete('/usuarios/'+userId)
+it('Update existing user', async ()=>{
+
+const email = `qa_update_${Date.now()}@test.com`
+
+const res = await request(BASE_URL)
+.put(`/usuarios/${userId}`)
+.send({
+ nome:'QA Updated',
+ email:email,
+ password:'123456',
+ administrador:'true'
+})
+
 expect(res.status).to.equal(200)
+
+})
+
+it('Delete created user', async ()=>{
+
+const res = await request(BASE_URL)
+.delete(`/usuarios/${userId}`)
+
+expect(res.status).to.equal(200)
+
 })
 
 })

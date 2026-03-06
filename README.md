@@ -1,96 +1,48 @@
+# Carrefour QA Automation Framework
 
-# Mobile Automation Technical Test
+Automation framework developed for a Senior QA Automation technical challenge.
 
-<<<<<<< HEAD
-Automation project created for the Carrefour QA Automation technical challenge.
+## Technologies
 
-## Mobile Automation
-Tools:
+Mobile Automation
 - WebdriverIO
 - Appium
 - Mocha
 - Chai
+- Page Object Model
+- Allure Reports
 
-Features:
-- Android and iOS execution
-- 10 automated mobile scenarios
-
-## API Automation
-Tools:
+API Automation
+- Node.js
 - Supertest
 - Mocha
 - Chai
 
-Features:
-- JWT authentication
-- Full CRUD coverage
-
-## CI/CD
-Pipeline configured using GitLab CI.
-
-## Author
-Gilvando De Sena Matos
-
-LinkedIn:
-https://www.linkedin.com/in/gilvando-matos-3a259821/
-=======
-Mobile automation project developed using WebdriverIO, Appium, Mocha and Chai.
-
-## Technologies
-JavaScript  
-WebdriverIO  
-Appium  
-Mocha  
-Chai  
-Allure Report  
-
 ## Project Structure
 
-test/specs -> test scenarios  
-test/pageobjects -> page objects for UI interaction  
-test/utils -> reusable utilities  
-data -> test data used for data-driven execution  
+carrefour-qa-automation
+│
+├── api-tests
+├── mobile-tests
+├── package.json
+├── .gitignore
+└── README.md
 
-## Test Strategy
+## Running the tests
 
-The automated tests focus on validating the main user flows of the application:
+Install dependencies:
 
-• Authentication (login scenarios)  
-• Navigation between screens  
-• Form interaction  
-• UI element validation  
+npm run install:all
 
-The tests follow the Page Object Model pattern to improve maintainability
-and separation between test logic and UI interaction.
+Run API tests:
 
-Test data is externalized using JSON files to support data-driven execution.
+npm test
 
-## Test Coverage
+Run mobile tests:
 
-Login scenarios  
-Navigation between screens  
-Form interaction  
-UI validation  
-
-Total: 10 automated scenarios.
-
-## Installation
-
-npm install
-
-## Run Tests
-
-npx wdio run wdio.conf.js
-
-## Reports
-
-npm run report
-
-## CI/CD
-
-Pipeline configuration included in `.gitlab-ci.yml`.
+npm run test:mobile
 
 ## Author
 
 Gilvando De Sena Matos
->>>>>>> 23237f09b4e0e9f1d8f8aa3f10325747d410b56d
+LinkedIn: https://www.linkedin.com/in/gilvando-matos-3a259821/
