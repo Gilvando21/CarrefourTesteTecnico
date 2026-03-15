@@ -1,14 +1,14 @@
 
 # QA Automation Framework – Carrefour Technical Challenge
 
-![Node.js](https://img.shields.io/badge/node.js-18-green)  
-![WebdriverIO](https://img.shields.io/badge/webdriverio-v8-blue)  
-![Appium](https://img.shields.io/badge/appium-mobile-orange)  
+![Node.js](https://img.shields.io/badge/node.js-18-green)
+![WebdriverIO](https://img.shields.io/badge/webdriverio-v8-blue)
+![Appium](https://img.shields.io/badge/appium-mobile-orange)
 ![Automation](https://img.shields.io/badge/test-automation-brightgreen)
 
 Automation framework developed to validate **API and Mobile functionalities** following modern QA Automation practices.
 
-The project was created to attend the requirements of the **Carrefour QA Automation Technical Challenge**, implementing automated tests for a REST API and a mobile application using JavaScript-based tools.
+This project was created as part of the **Carrefour QA Automation Technical Challenge**, implementing automated tests for a REST API and a mobile application using modern JavaScript testing tools.
 
 ---
 
@@ -66,6 +66,24 @@ Coverage includes:
 
 ---
 
+# Framework Architecture
+
+The project follows common automation architecture patterns used in professional QA teams.
+
+### API Architecture
+- **Auth Layer** → Handles authentication and token generation
+- **Service Layer** → Centralizes API requests
+- **Data Builder** → Generates dynamic test data
+- **Schema Validation** → Ensures API contract integrity
+- **Test Layer** → Contains test scenarios
+
+### Mobile Architecture
+- **Page Object Model (POM)** for maintainability
+- **Test Specs** separated from page logic
+- **Test Data files** for data‑driven execution
+
+---
+
 # Project Structure
 
 carrefour-desafio-tecnico
@@ -91,50 +109,64 @@ carrefour-desafio-tecnico
 
 # Setup
 
-Clone the repository:
+Clone the repository
 
 git clone https://github.com/Gilvando21/carrefour-desafio-tecnico.git
 
-Navigate to the project folder:
+Navigate to the project folder
 
 cd carrefour-desafio-tecnico
 
-Install dependencies:
+Install dependencies
 
 npm run install:all
 
 ---
 
-# Running the Tests
+# How to Run
 
-Run API tests:
+Install dependencies
+
+npm run install:all
+
+Run API tests
 
 npm run test:api
 
-Run Mobile tests:
+Run Mobile tests
 
 npm run test:mobile
 
 ---
 
-# Reports
+# CI/CD Pipeline
 
-Mobile tests generate **Allure reports** with screenshots and execution details.
-
-Artifacts are configured to be stored during CI execution.
-
----
-
-# CI/CD
-
-The project includes a **GitLab CI pipeline** that automates test execution and stores test artifacts.
+The repository includes a **GitLab CI configuration** that can execute automated tests in a pipeline.
 
 Pipeline stages:
 
-- Dependency installation
-- API test execution
-- Mobile test execution
-- Artifact storage
+1. Install dependencies
+2. Execute API tests
+3. Execute mobile tests
+4. Store test artifacts
+
+---
+
+# Reports
+
+Mobile test executions support **Allure reports**, generating execution logs and screenshots for failures.
+
+---
+
+# Best Practices Implemented
+
+- Modular automation architecture
+- Page Object Model (Mobile)
+- Service Layer Pattern (API)
+- Dynamic test data generation
+- Schema validation
+- CI/CD integration
+- Clean repository structure
 
 ---
 
