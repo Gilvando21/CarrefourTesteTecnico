@@ -1,36 +1,39 @@
+exports.config = {
 
-exports.config={
+runner: 'local',
 
-runner:'local',
+hostname: 'localhost',
+port: 4723,
+path: '/',
 
-specs:['./specs/**/*.js'],
+specs: ['./specs/**/*.js'],
 
-maxInstances:2,
+maxInstances: 2,
 
-capabilities:[{
-platformName:'Android',
-'appium:deviceName':'Android Emulator',
-'appium:automationName':'UiAutomator2',
-'appium:app':'./app/android-native-demo.apk'
+capabilities: [{
+ platformName: 'Android',
+ 'appium:deviceName': 'Android Emulator',
+ 'appium:automationName': 'UiAutomator2',
+ 'appium:app': './app/android-native-demo.apk'
 }],
 
-framework:'mocha',
+framework: 'mocha',
 
-mochaOpts:{
-timeout:60000,
-retries:1
+mochaOpts: {
+ timeout: 60000,
+ retries: 1
 },
 
-reporters:[
-'spec',
-['allure',{outputDir:'allure-results'}]
+reporters: [
+ 'spec',
+ ['allure', { outputDir: 'allure-results' }]
 ],
 
-afterTest:async function(test,context,{error}){
+afterTest: async function (test, context, { error }) {
 
-if(error){
-await browser.saveScreenshot(`./screenshots/${test.title}.png`)
-}
+ if (error) {
+  await browser.saveScreenshot(`./screenshots/${test.title}.png`)
+ }
 
 }
 
