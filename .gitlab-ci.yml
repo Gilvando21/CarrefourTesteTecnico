@@ -1,0 +1,31 @@
+
+stages:
+  - install
+  - test
+
+install_dependencies:
+  stage: install
+  image: node:18
+  script:
+    - npm run install:all
+
+api_tests:
+  stage: test
+  image: node:18
+  script:
+    - npm run test:api
+  artifacts:
+    when: always
+    paths:
+      - api-tests/reports
+
+mobile_tests:
+  stage: test
+  image: node:18
+  script:
+    - npm run test:mobile
+  artifacts:
+    when: always
+    paths:
+      - mobile-tests/allure-results
+      - mobile-tests/screenshots

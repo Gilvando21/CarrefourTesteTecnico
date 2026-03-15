@@ -1,0 +1,15 @@
+
+{
+  "name": "api-tests",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "mocha tests/**/*.test.js --timeout 15000 --retries 2"
+  },
+  "dependencies": {
+    "supertest": "^6.3.3",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "ajv": "^8.12.0",
+    "@faker-js/faker": "^8.0.0"
+  }
+}

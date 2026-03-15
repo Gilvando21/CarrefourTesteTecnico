@@ -1,0 +1,12 @@
+
+{
+  "name": "carrefour-qa-automation-framework",
+  "version": "5.0.0",
+  "description": "Final QA Automation Framework - API + Mobile (Aligned with Carrefour Challenge)",
+  "scripts": {
+    "install:all": "cd api-tests && npm install && cd ../mobile-tests && npm install",
+    "test:api": "cd api-tests && npm test",
+    "test:mobile": "cd mobile-tests && npx wdio run wdio.conf.js",
+    "test": "npm run install:all && npm run test:api && npm run test:mobile"
+  }
+}
