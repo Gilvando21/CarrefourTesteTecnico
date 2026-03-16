@@ -9,7 +9,7 @@ const userSchema = require("../schemas/user.schema")
 const ajv = new Ajv()
 const validate = ajv.compile(userSchema)
 
-describe("Users API",()=>{
+describe("Users API @api",()=>{
 
  let token
 
@@ -17,25 +17,25 @@ describe("Users API",()=>{
   token = await getToken()
  })
 
- it("List users",async()=>{
+ it("List users @smoke",async()=>{
   const res = await service.getUsers()
 
   expect(res.status).to.equal(200)
   expect(res.headers["content-type"]).to.include("application/json")
  })
 
- it("Create user",async()=>{
+ it("Create user @smoke",async()=>{
 
- const user = buildUser()
+  const user = buildUser()
 
- const res = await service.createUser(user,token)
+  const res = await service.createUser(user,token)
 
- expect(res.status).to.equal(201)
- expect(res.body).to.have.property("_id")
+  expect(res.status).to.equal(201)
+  expect(res.body).to.have.property("_id")
 
-})
+ })
 
- it("Invalid user creation",async()=>{
+ it("Invalid user creation @negative",async()=>{
 
   const invalidUser = { nome:"Invalid" }
 
@@ -44,7 +44,7 @@ describe("Users API",()=>{
   expect(res.status).to.not.equal(201)
  })
 
- it("Rate limit simulation",async()=>{
+ it("Rate limit simulation @performance",async()=>{
 
   for(let i=0;i<10;i++){
    await service.getUsers()
@@ -54,7 +54,7 @@ describe("Users API",()=>{
 
  })
 
- it("Update user",async()=>{
+ it("Update user @regression",async()=>{
 
   const user = buildUser()
 
@@ -75,7 +75,7 @@ describe("Users API",()=>{
 
  })
 
- it("Delete user",async()=>{
+ it("Delete user @regression",async()=>{
 
   const user = buildUser()
 

@@ -3,7 +3,7 @@
   "name": "api-tests",
   "version": "1.0.0",
   "scripts": {
-    "test": "mocha tests/**/*.test.js --timeout 15000 --retries 2"
+    "test": "mocha tests/**/*.test.js --timeout 15000 --retries 2 --parallel"
   },
   "dependencies": {
     "supertest": "^6.3.3",
